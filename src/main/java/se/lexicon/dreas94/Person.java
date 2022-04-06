@@ -3,9 +3,9 @@ package se.lexicon.dreas94;
 public class Person
 {
     private int id;
-    private String firstName = "";
-    private String lastName = "";
-    private String email = "";
+    private String firstName;
+    private String lastName;
+    private String email;
 
     private void nullWarning()
     {
