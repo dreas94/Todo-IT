@@ -2,37 +2,29 @@ package se.lexicon.dreas94;
 
 public class Person
 {
-    private int id;
+    private final int id;
     private String firstName;
     private String lastName;
     private String email;
 
-    private void nullWarning()
+    static int sequencer = 0;
+
+    public Person()
     {
-        System.out.println("Null is not a allowed value, try again!");
+        this("","","");
     }
 
-    public Person(int id, String firstName, String lastName, String email)
+    public Person(String firstName, String lastName, String email)
     {
-        if(firstName == null || lastName  == null || email == null)
-        {
-            nullWarning();
-            return;
-        }
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+        this.id = ++sequencer;
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
     }
 
     public int getId()
     {
         return id;
-    }
-
-    public void setId(int id)
-    {
-        this.id = id;
     }
 
     public String getFirstName()
@@ -44,7 +36,7 @@ public class Person
     {
         if(firstName == null)
         {
-            nullWarning();
+            MessageHandler.baseWarning("Person::setFirstName");
             return;
         }
 
@@ -60,7 +52,7 @@ public class Person
     {
         if(lastName == null)
         {
-            nullWarning();
+            MessageHandler.baseWarning("Person::setLastName");
             return;
         }
 
@@ -76,7 +68,7 @@ public class Person
     {
         if(email == null)
         {
-            nullWarning();
+            MessageHandler.baseWarning();
             return;
         }
 
