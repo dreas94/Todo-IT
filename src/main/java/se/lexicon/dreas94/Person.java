@@ -16,7 +16,7 @@ public class Person
 
     public Person(String firstName, String lastName, String email)
     {
-        this.id = ++sequencer;
+        this.id = sequencer++;
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
@@ -36,7 +36,7 @@ public class Person
     {
         if(firstName == null)
         {
-            MessageHandler.baseWarning("Person::setLastName");
+            MessageHandler.baseWarning("Person::setFirstName");
             return;
         }
         this.firstName = firstName;
@@ -67,7 +67,7 @@ public class Person
     {
         if(email == null)
         {
-            MessageHandler.baseWarning();
+            MessageHandler.baseWarning("Person::setEmail");
             return;
         }
 
