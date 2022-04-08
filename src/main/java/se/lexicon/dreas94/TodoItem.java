@@ -15,12 +15,12 @@ public class TodoItem
 
     public TodoItem()
     {
-        this("Untitled", "", LocalDate.now(), new Person());
+        this.id = sequencer++;
     }
 
     public TodoItem(String title, String taskDescription, LocalDate deadLine, Person creator)
     {
-        this.id = ++sequencer;
+        this();
         setTitle(title);
         setTaskDescription(taskDescription);
         setDeadLine(deadLine);
@@ -43,8 +43,6 @@ public class TodoItem
         if(title == null || title.compareToIgnoreCase("") == 0)
         {
             MessageHandler.baseWarning("TodoItem::setTitle()");
-            this.title = "Untitled";
-            return;
         }
 
         this.title = title;
@@ -70,8 +68,6 @@ public class TodoItem
         if(deadLine == null)
         {
             MessageHandler.baseWarning("TodoItem::setDeadLine()");
-            this.deadLine = LocalDate.now();
-            return;
         }
 
         this.deadLine = deadLine;

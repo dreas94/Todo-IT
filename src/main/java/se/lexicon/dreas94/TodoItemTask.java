@@ -11,12 +11,12 @@ public class TodoItemTask
 
     public TodoItemTask()
     {
-        this(new TodoItem(),new Person());
+        this.id = sequencer++;
     }
 
     public TodoItemTask(TodoItem todoItem, Person assignee)
     {
-        this.id = ++sequencer;
+        this();
         assigned = assignee != null;
         setTodoItem(todoItem);
         setAssignee(assignee);
@@ -47,8 +47,6 @@ public class TodoItemTask
         if(todoItem == null)
         {
             MessageHandler.baseWarning("TodoItemTask::setTodoItem()");
-            this.todoItem = new TodoItem();
-            return;
         }
         this.todoItem = todoItem;
     }

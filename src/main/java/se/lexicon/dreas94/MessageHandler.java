@@ -14,6 +14,6 @@ public class MessageHandler
     }
     public static void baseWarning(String text)
     {
-        msg(text + "::You did something wrong with the input, default value used instead");
+        throw new IllegalArgumentException(text + "::You did something wrong with the input, default value used instead");
     }
 }

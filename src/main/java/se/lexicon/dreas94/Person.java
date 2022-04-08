@@ -11,12 +11,12 @@ public class Person
 
     public Person()
     {
-        this("","","");
+        this.id = sequencer++;
     }
 
     public Person(String firstName, String lastName, String email)
     {
-        this.id = sequencer++;
+        this();
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
@@ -52,7 +52,6 @@ public class Person
         if(lastName == null)
         {
             MessageHandler.baseWarning("Person::setLastName");
-            return;
         }
 
         this.lastName = lastName;
@@ -68,7 +67,6 @@ public class Person
         if(email == null)
         {
             MessageHandler.baseWarning("Person::setEmail");
-            return;
         }
 
         this.email = email;
