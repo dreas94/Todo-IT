@@ -3,38 +3,40 @@ package se.lexicon.dreas94;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class PersonTest
 {
     private Person testSubject;
-    private Person testSubject1;
+
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
 
     @Before
     public void setUp()
     {
+        Person personTest = new Person("Mehrdad", "Javan", "fakeemail1@gmail.com");
         testSubject = new Person("Andreas", "Eriksson", "fakeemail@gmail.com");
-        testSubject1 = new Person("Mehrdad", "Javan", "fakeemail1@gmail.com");
     }
 
     @Test
-    public void getID()
+    public void test_getID()
     {
-        final int expectedNum = 0;
-        final int expectedNum1= 1;
+        final int expectedNum = 1;
         assertEquals(expectedNum, testSubject.getId());
-        assertEquals(expectedNum1, testSubject1.getId());
     }
 
     @Test
-    public void getFirstName()
+    public void test_getFirstName()
     {
         String expectedName = "Andreas";
         assertEquals(expectedName, testSubject.getFirstName());
     }
 
     @Test
-    public void setFirstName()
+    public void test_setFirstName()
     {
         String testName = "And23reas";
         testSubject.setFirstName(testName);
@@ -42,23 +44,23 @@ public class PersonTest
     }
 
     @Test
-    public void setFirstNameToNull()
+    public void test_setFirstNameToNull()
     {
-        String expectedName = "Andreas";
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("Person::setEmail::You did something wrong with the input, default value used instead");
         String testName = null;
         testSubject.setFirstName(testName);
-        assertEquals(expectedName, testSubject.getFirstName());
     }
 
     @Test
-    public void getLastName()
+    public void test_getLastName()
     {
         String expectedName = "Eriksson";
         assertEquals(expectedName, testSubject.getLastName());
     }
 
     @Test
-    public void setLastName()
+    public void test_setLastName()
     {
         String testName = "Erik23sson";
         testSubject.setFirstName(testName);
@@ -66,23 +68,23 @@ public class PersonTest
     }
 
     @Test
-    public void setLastNameToNull()
+    public void test_setLastNameToNull()
     {
-        String expectedName = "Eriksson";
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("Person::setEmail::You did something wrong with the input, default value used instead");
         String testName = null;
         testSubject.setFirstName(testName);
-        assertEquals(expectedName, testSubject.getLastName());
     }
 
     @Test
-    public void getEmail()
+    public void test_getEmail()
     {
         String expectedEmail = "fakeemail@gmail.com";
         assertEquals(expectedEmail, testSubject.getEmail());
     }
 
     @Test
-    public void setEmail()
+    public void test_setEmail()
     {
         String testEmail = "ASFDdafsdf@gmail.com";
         testSubject.setEmail(testEmail);
@@ -90,23 +92,23 @@ public class PersonTest
     }
 
     @Test
-    public void setEmailToNull()
+    public void test_setEmailToNull()
     {
-        String expectedEmail = "fakeemail@gmail.com";
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("Person::setEmail::You did something wrong with the input, default value used instead");
         String testEmail = null;
         testSubject.setEmail(testEmail);
-        assertEquals(expectedEmail, testSubject.getEmail());
     }
 
     @Test
-    public void getSummary()
+    public void test_getSummary()
     {
         String expectedSummary = "{Id: 0, Name: Andreas Eriksson, Email: fakeemail@gmail.com}";
         assertEquals(expectedSummary, testSubject.getSummary());
     }
 
     @Test
-    public void getSummaryAndChange()
+    public void test_getSummaryAndChange()
     {
         String expectedSummary = "{Id: 0, Name: Andreas Eriksson, Email: fakeemail@gmail.com}";
         assertEquals(expectedSummary, testSubject.getSummary());
