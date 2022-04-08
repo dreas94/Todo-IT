@@ -34,7 +34,7 @@ public class Person
 
     public void setFirstName(String firstName)
     {
-        if(lastName == null)
+        if(firstName == null)
         {
             MessageHandler.baseWarning("Person::setLastName");
             return;
