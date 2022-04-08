@@ -7,7 +7,7 @@ public class Person
     private String lastName;
     private String email;
 
-    static int sequencer = 0;
+    private static int sequencer = 0;
 
     public Person()
     {
@@ -34,12 +34,11 @@ public class Person
 
     public void setFirstName(String firstName)
     {
-        if(firstName == null)
+        if(lastName == null)
         {
-            MessageHandler.baseWarning("Person::setFirstName");
+            MessageHandler.baseWarning("Person::setLastName");
             return;
         }
-
         this.firstName = firstName;
     }
 

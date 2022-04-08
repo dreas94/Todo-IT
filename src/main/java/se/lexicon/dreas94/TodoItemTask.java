@@ -1,11 +1,26 @@
 package se.lexicon.dreas94;
 
-public class TotoItemTask
+public class TodoItemTask
 {
-    private int id;
+    private final int id;
     private boolean assigned;
     private TodoItem todoItem;
     private Person assignee;
+
+    private static int sequencer = 0;
+
+    public TodoItemTask()
+    {
+        this(new TodoItem(),new Person());
+    }
+
+    public TodoItemTask(TodoItem todoItem, Person assignee)
+    {
+        this.id = ++sequencer;
+        assigned = assignee != null;
+        setTodoItem(todoItem);
+        setAssignee(assignee);
+    }
 
     public int getId()
     {
@@ -51,8 +66,8 @@ public class TotoItemTask
     public String getSummary()
     {
         if(assigned)
-            return "{Id: " + id + todoItem.getSummary() + ", Assigned Status: " + assignee.getSummary() + "}";
+            return "{Id: " + id + ", Todo Item: " + todoItem.getSummary() + ", Assigned Status: " + assignee.getSummary() + "}";
         else
-            return "{Id: " + id + todoItem.getSummary() + " Assigned Status: None}";
+            return "{Id: " + id + ", Todo Item: " +  todoItem.getSummary() + ", Assigned Status: None}";
     }
 }

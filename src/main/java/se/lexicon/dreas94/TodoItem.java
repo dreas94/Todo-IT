@@ -11,20 +11,20 @@ public class TodoItem
     private boolean done;
     Person creator;
 
-    static int sequencer = 0;
+    private static int sequencer = 0;
 
     public TodoItem()
     {
-        this("Untitled", "", LocalDate.now(), true, null);
+        this("Untitled", "", LocalDate.now(), new Person());
     }
 
-    public TodoItem(String title, String taskDescription, LocalDate deadLine, boolean done, Person creator)
+    public TodoItem(String title, String taskDescription, LocalDate deadLine, Person creator)
     {
         this.id = ++sequencer;
         setTitle(title);
         setTaskDescription(taskDescription);
         setDeadLine(deadLine);
-        setDone(done);
+        setDone(false);
         setCreator(creator);
     }
 
@@ -104,6 +104,6 @@ public class TodoItem
 
     public String getSummary()
     {
-        return "{Id: " + id + ", Title: " + title + ", Description:" + taskDescription + ", Deadline: " + deadLine + ", Is Finished?: " + done + "Created by: " + creator.getSummary() + "}";
+        return "{Id: " + id + ", Title: " + title + ", Description:" + taskDescription + ", Deadline: " + deadLine + ", Is Finished?: " + done + ", Created by: " + creator.getSummary() + "}";
     }
 }
