@@ -17,7 +17,6 @@ public class TodoItemTask
     public TodoItemTask(TodoItem todoItem, Person assignee)
     {
         this();
-        assigned = assignee != null;
         setTodoItem(todoItem);
         setAssignee(assignee);
     }
@@ -32,9 +31,9 @@ public class TodoItemTask
         return assigned;
     }
 
-    public void setAssigned(boolean assigned)
+    private void setAssigned(boolean assigned)
     {
-        this.assigned = assigned && assignee != null;
+        this.assigned = assigned;
     }
 
     public TodoItem getTodoItem()
@@ -59,6 +58,7 @@ public class TodoItemTask
     public void setAssignee(Person assignee)
     {
         this.assignee = assignee;
+        setAssigned(this.assignee != null);
     }
 
     public String getSummary()
