@@ -3,10 +3,13 @@ package se.lexicon.dreas94;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
+import org.junit.runners.MethodSorters;
+import se.lexicon.dreas94.model.Person;
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PersonTest
 {
     private Person testSubject;
@@ -22,14 +25,14 @@ public class PersonTest
     }
 
     @Test
-    public void test_getID()
+    public void btest_getID()
     {
         final int expectedNum = 1;
         assertEquals(expectedNum, testSubject.getId());
     }
 
     @Test
-    public void test_getFirstName()
+    public void atest_getFirstName()
     {
         String expectedName = "Andreas";
         assertEquals(expectedName, testSubject.getFirstName());

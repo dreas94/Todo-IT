@@ -1,17 +1,20 @@
-package se.lexicon.dreas94;
+package se.lexicon.dreas94.model;
+
+import se.lexicon.dreas94.MessageHandler;
 
 import java.time.LocalDate;
 
 public class TodoItem
 {
+    private static int sequencer = 0;
+
     private final int id;
     private String title;
     private String taskDescription;
     private LocalDate deadLine;
     private boolean done;
-    Person creator;
+    private Person creator;
 
-    private static int sequencer = 0;
 
     public TodoItem()
     {

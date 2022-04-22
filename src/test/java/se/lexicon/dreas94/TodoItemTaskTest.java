@@ -6,6 +6,9 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import se.lexicon.dreas94.model.Person;
+import se.lexicon.dreas94.model.TodoItem;
+import se.lexicon.dreas94.model.TodoItemTask;
 
 import java.time.LocalDate;
 

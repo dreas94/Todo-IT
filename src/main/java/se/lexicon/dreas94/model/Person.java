@@ -1,4 +1,6 @@
-package se.lexicon.dreas94;
+package se.lexicon.dreas94.model;
+
+import se.lexicon.dreas94.MessageHandler;
 
 public class Person
 {
@@ -72,6 +74,10 @@ public class Person
         this.email = email;
     }
 
+    /**
+     * java doc <b>test summary method</b>
+     * @return String, it is an information about the person object and so on
+     */
     public String getSummary()
     {
         return "{Id: " + id + ", Name: " + firstName + " " + lastName + ", Email: " + email + "}";

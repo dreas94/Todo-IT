@@ -1,13 +1,16 @@
-package se.lexicon.dreas94;
+package se.lexicon.dreas94.model;
+
+import se.lexicon.dreas94.MessageHandler;
 
 public class TodoItemTask
 {
+    private static int sequencer = 0;
+
     private final int id;
     private boolean assigned;
     private TodoItem todoItem;
     private Person assignee;
 
-    private static int sequencer = 0;
 
     public TodoItemTask()
     {
@@ -67,5 +70,6 @@ public class TodoItemTask
             return "{Id: " + id + ", Todo Item: " + todoItem.getSummary() + ", Assigned Status: " + assignee.getSummary() + "}";
         else
             return "{Id: " + id + ", Todo Item: " +  todoItem.getSummary() + ", Assigned Status: None}";
+        // ternary operator
     }
 }
