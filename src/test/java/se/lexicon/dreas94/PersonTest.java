@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import se.lexicon.dreas94.model.Person;
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PersonTest
 {
     private Person testSubject;
@@ -50,7 +50,7 @@ public class PersonTest
     public void test_setFirstNameToNull()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Person::setEmail::You did something wrong with the input, default value used instead");
+        exception.expectMessage("Parameter: String firstName was null");
         String testName = null;
         testSubject.setFirstName(testName);
     }
@@ -66,7 +66,7 @@ public class PersonTest
     public void test_setLastName()
     {
         String testName = "Erik23sson";
-        testSubject.setFirstName(testName);
+        testSubject.setLastName(testName);
         assertEquals(testName, testSubject.getLastName());
     }
 
@@ -74,7 +74,7 @@ public class PersonTest
     public void test_setLastNameToNull()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Person::setEmail::You did something wrong with the input, default value used instead");
+        exception.expectMessage("Parameter: String firstName was null");
         String testName = null;
         testSubject.setFirstName(testName);
     }
@@ -106,17 +106,17 @@ public class PersonTest
     @Test
     public void test_getSummary()
     {
-        String expectedSummary = "{Id: 0, Name: Andreas Eriksson, Email: fakeemail@gmail.com}";
-        assertEquals(expectedSummary, testSubject.getSummary());
+        String expectedSummary = "Person{id=1, firstName='Andreas', lastName='Eriksson', email='fakeemail@gmail.com'}";
+        assertEquals(expectedSummary, testSubject.toString());
     }
 
     @Test
     public void test_getSummaryAndChange()
     {
-        String expectedSummary = "{Id: 0, Name: Andreas Eriksson, Email: fakeemail@gmail.com}";
-        assertEquals(expectedSummary, testSubject.getSummary());
-        String expectedSummary1 = "{Id: 0, Name: Anfsdsdfsreas Eriksson, Email: fakeemail@gmail.com}";
+        String expectedSummary = "Person{id=1, firstName='Andreas', lastName='Eriksson', email='fakeemail@gmail.com'}";
+        assertEquals(expectedSummary, testSubject.toString());
+        String expectedSummary1 = "Person{id=1, firstName='Anfsdsdfsreas', lastName='Eriksson', email='fakeemail@gmail.com'}";
         testSubject.setFirstName("Anfsdsdfsreas");
-        assertEquals(expectedSummary1, testSubject.getSummary());
+        assertEquals(expectedSummary1, testSubject.toString());
     }
 }

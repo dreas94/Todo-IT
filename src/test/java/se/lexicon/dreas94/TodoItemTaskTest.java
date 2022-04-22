@@ -6,9 +6,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import se.lexicon.dreas94.model.Person;
-import se.lexicon.dreas94.model.TodoItem;
-import se.lexicon.dreas94.model.TodoItemTask;
+import se.lexicon.dreas94.model.*;
 
 import java.time.LocalDate;
 
@@ -74,27 +72,18 @@ public class TodoItemTaskTest
     @Test
     public void test_getSummary()
     {
-        String expectedSummary = "{Id: 1, Todo Item: {Id: 0, Title: Testing, Description:Testing some java code" +
-                " to see that it works, Deadline: 2018-12-27, Is Finished?: false, Created by: {Id: 0, " +
-                "Name: Andreas Eriksson, Email: fakeemail@gmail.com}}, Assigned Status: {Id: 1, Name: Mehrdad Javan, " +
-                "Email: fakeemail1@gmail.com}}";
-        assertEquals(expectedSummary, testTodoItemTask.getSummary());
+        String expectedSummary = "TodoItemTask{id=1, assigned=true, todoItem=TodoItem{id=0, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}}";
+        assertEquals(expectedSummary, testTodoItemTask.toString());
     }
 
     @Test
     public void test_getSummaryAndChange()
     {
-        String expectedSummary = "{Id: 1, Todo Item: {Id: 0, Title: Testing, Description:Testing some java code" +
-                " to see that it works, Deadline: 2018-12-27, Is Finished?: false, Created by: {Id: 0, " +
-                "Name: Andreas Eriksson, Email: fakeemail@gmail.com}}, Assigned Status: {Id: 1, Name: Mehrdad Javan, " +
-                "Email: fakeemail1@gmail.com}}";
-        assertEquals(expectedSummary, testTodoItemTask.getSummary());
-        String expectedSummary1 = "{Id: 1, Todo Item: {Id: 0, Title: Testing, Description:Testing some java code" +
-                " to see that it works, Deadline: 2018-12-27, Is Finished?: false, Created by: {Id: 0, " +
-                "Name: Andreas Eriksson, Email: fakeemail@gmail.com}}, Assigned Status: {Id: 1, Name: Anfsdsdfsreas Javan, " +
-                "Email: fakeemail1@gmail.com}}";
+        String expectedSummary = "TodoItemTask{id=1, assigned=true, todoItem=TodoItem{id=0, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}}";
+        assertEquals(expectedSummary, testTodoItemTask.toString());
+        String expectedSummary1 = "TodoItemTask{id=1, assigned=true, todoItem=TodoItem{id=0, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}}";
         testTodoItemTask.getAssignee().setFirstName("Anfsdsdfsreas");
-        assertEquals(expectedSummary1, testTodoItemTask.getSummary());
+        assertEquals(expectedSummary1, testTodoItemTask.toString());
     }
 
 }

@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import se.lexicon.dreas94.model.Person;
-import se.lexicon.dreas94.model.TodoItem;
+import se.lexicon.dreas94.model.*;
 
 import java.time.LocalDate;
 
@@ -144,17 +143,17 @@ public class TodoItemTest
     @Test
     public void test_getSummary()
     {
-        String expectedSummary = "{Id: 1, Title: Testing, Description:Testing some java code to see that it works, Deadline: 2018-12-27, Is Finished?: false, Created by: {Id: 0, Name: Andreas Eriksson, Email: fakeemail@gmail.com}}";
-        assertEquals(expectedSummary, testTodoItem.getSummary());
+        String expectedSummary = "TodoItem{id=1, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}";
+        assertEquals(expectedSummary, testTodoItem.toString());
     }
 
     @Test
     public void test_getSummaryAndChange()
     {
-        String expectedSummary = "{Id: 1, Title: Testing, Description:Testing some java code to see that it works, Deadline: 2018-12-27, Is Finished?: false, Created by: {Id: 0, Name: Andreas Eriksson, Email: fakeemail@gmail.com}}";
-        assertEquals(expectedSummary, testTodoItem.getSummary());
-        String expectedSummary1 = "{Id: 1, Title: Anfsdsdfsreas, Description:Testing some java code to see that it works, Deadline: 2018-12-27, Is Finished?: false, Created by: {Id: 0, Name: Andreas Eriksson, Email: fakeemail@gmail.com}}";
+        String expectedSummary = "TodoItem{id=1, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}";
+        assertEquals(expectedSummary, testTodoItem.toString());
+        String expectedSummary1 = "TodoItem{id=1, title='Anfsdsdfsreas', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}";
         testTodoItem.setTitle("Anfsdsdfsreas");
-        assertEquals(expectedSummary1, testTodoItem.getSummary());
+        assertEquals(expectedSummary1, testTodoItem.toString());
     }
 }

@@ -2,6 +2,8 @@ package se.lexicon.dreas94.model;
 
 import se.lexicon.dreas94.MessageHandler;
 
+import java.util.Objects;
+
 public class TodoItemTask
 {
     private static int sequencer = 0;
@@ -46,10 +48,7 @@ public class TodoItemTask
 
     public void setTodoItem(TodoItem todoItem)
     {
-        if(todoItem == null)
-        {
-            MessageHandler.baseWarning("TodoItemTask::setTodoItem()");
-        }
+        if (todoItem == null) throw new IllegalArgumentException("Parameter: TodoItem todoItem was null");
         this.todoItem = todoItem;
     }
 
@@ -64,12 +63,28 @@ public class TodoItemTask
         setAssigned(this.assignee != null);
     }
 
-    public String getSummary()
+    @Override
+    public String toString()
     {
-        if(assigned)
-            return "{Id: " + id + ", Todo Item: " + todoItem.getSummary() + ", Assigned Status: " + assignee.getSummary() + "}";
-        else
-            return "{Id: " + id + ", Todo Item: " +  todoItem.getSummary() + ", Assigned Status: None}";
-        // ternary operator
+        return "TodoItemTask{" +
+                "id=" + id +
+                ", assigned=" + assigned +
+                ", todoItem=" + todoItem +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TodoItemTask that = (TodoItemTask) o;
+        return getId() == that.getId() && isAssigned() == that.isAssigned() && getTodoItem().equals(that.getTodoItem());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(getId(), isAssigned(), getTodoItem());
     }
 }
