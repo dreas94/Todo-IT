@@ -61,7 +61,7 @@ public class Person
 
     public void setEmail(String email)
     {
-        if(lastName == null) throw new IllegalArgumentException("Parameter: String email was null");
+        if(email == null) throw new IllegalArgumentException("Parameter: String email was null");
 
         this.email = email;
     }

@@ -65,7 +65,7 @@ public class TodoItem
 
     public void setDeadLine(LocalDate deadLine)
     {
-        if (deadLine == null) throw new IllegalArgumentException("Parameter: String deadLine was null");
+        if (deadLine == null) throw new IllegalArgumentException("Parameter: LocalDate deadLine was null");
 
         this.deadLine = deadLine;
     }

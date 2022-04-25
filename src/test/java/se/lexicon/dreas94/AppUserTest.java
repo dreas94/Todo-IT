@@ -2,7 +2,7 @@ package se.lexicon.dreas94;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
@@ -15,26 +15,26 @@ import se.lexicon.dreas94.model.AppUser;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AppUserTest
 {
-    private AppUser testUser;
+    private static AppUser testUser;
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
-    @Before
-    public void setUp()
+    @BeforeClass
+    public static void setUp()
     {
         testUser = new AppUser("Andreas", "Eriksoneriuo", AppRole.ROLE_APP_USER);
     }
 
     @Test
-    public void test_getUsername()
+    public void atest_getUsername()
     {
         String expectedUsername = "Andreas";
         assertEquals(expectedUsername, testUser.getUsername());
     }
 
     @Test
-    public void test_setUserName()
+    public void btest_setUserName()
     {
         String testUsername = "Andreas1234";
         testUser.setUsername(testUsername);
@@ -42,7 +42,7 @@ public class AppUserTest
     }
 
     @Test
-    public void test_setUserNameToNull()
+    public void ctest_setUserNameToNull()
     {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("Parameter: String username was null");
@@ -51,7 +51,7 @@ public class AppUserTest
     }
 
     @Test
-    public void test_setUserNameToEmpty()
+    public void dtest_setUserNameToEmpty()
     {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("Parameter: String username was empty");
@@ -60,14 +60,14 @@ public class AppUserTest
     }
 
     @Test
-    public void test_getPassword()
+    public void etest_getPassword()
     {
         String expectedPassword = "Eriksoneriuo";
         assertEquals(expectedPassword, testUser.getPassword());
     }
 
     @Test
-    public void test_setPassword()
+    public void ftest_setPassword()
     {
         String testPassword = "Eriksoneriuo12345123";
         testUser.setPassword(testPassword);
@@ -75,7 +75,7 @@ public class AppUserTest
     }
 
     @Test
-    public void test_setPasswordToNull()
+    public void gtest_setPasswordToNull()
     {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("Parameter: String password was null");
@@ -84,7 +84,7 @@ public class AppUserTest
     }
 
     @Test
-    public void test_setPasswordToEmpty()
+    public void htest_setPasswordToEmpty()
     {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("Parameter: String password was empty");
@@ -93,14 +93,14 @@ public class AppUserTest
     }
 
     @Test
-    public void test_getRole()
+    public void itest_getRole()
     {
         AppRole expectedRole = AppRole.ROLE_APP_USER;
         assertEquals(expectedRole, testUser.getRole());
     }
 
     @Test
-    public void test_setRole()
+    public void jtest_setRole()
     {
         AppRole testRole = AppRole.ROLE_APP_ADMIN;
         testUser.setRole(testRole);
@@ -108,7 +108,7 @@ public class AppUserTest
     }
 
     @Test
-    public void test_setRoleToNull()
+    public void ktest_setRoleToNull()
     {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("Parameter: AppRole role was null");
@@ -117,16 +117,16 @@ public class AppUserTest
     }
 
     @Test
-    public void test_toString()
+    public void ltest_toString()
     {
-        String expectedSummary = "AppUser{username='Andreas', role=ROLE_APP_USER}";
+        String expectedSummary = "AppUser{username='Andreas1234', role=ROLE_APP_ADMIN}";
         assertEquals(expectedSummary, testUser.toString());
     }
 
     @Test
-    public void test_changeUsernameAndToString()
+    public void mtest_changeUsernameAndToString()
     {
-        String expectedSummary1 = "AppUser{username='Anfsdsdfsreas', role=ROLE_APP_USER}";
+        String expectedSummary1 = "AppUser{username='Anfsdsdfsreas', role=ROLE_APP_ADMIN}";
         testUser.setUsername("Anfsdsdfsreas");
         assertEquals(expectedSummary1, testUser.toString());
     }

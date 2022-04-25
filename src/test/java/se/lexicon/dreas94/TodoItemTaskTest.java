@@ -2,25 +2,27 @@ package se.lexicon.dreas94;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.junit.runners.MethodSorters;
 import se.lexicon.dreas94.model.*;
 
 import java.time.LocalDate;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TodoItemTaskTest
 {
-    private TodoItemTask testTodoItemTask;
-    private TodoItem testTodoItem;
-    private Person testAssignee;
+    private static TodoItemTask testTodoItemTask;
+    private static TodoItem testTodoItem;
+    private static Person testAssignee;
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
-    @Before
-    public void setUp()
+    @BeforeClass
+    public static void setUp()
     {
         TodoItemTask todoItemTest = new TodoItemTask();
         final Person testCreator = new Person("Andreas", "Eriksson", "fakeemail@gmail.com");
@@ -30,26 +32,26 @@ public class TodoItemTaskTest
     }
 
     @Test
-    public void test_getID()
+    public void atest_getID()
     {
         final int expectedNum = 1;
         assertEquals(expectedNum, testTodoItemTask.getId());
     }
 
     @Test
-    public void test_isAssigned()
+    public void btest_isAssigned()
     {
         assertTrue(testTodoItemTask.isAssigned());
     }
 
     @Test
-    public void test_getTodoItem()
+    public void ctest_getTodoItem()
     {
         assertEquals(testTodoItemTask.getTodoItem(),testTodoItem);
     }
 
     @Test
-    public void test_setTodoItem()
+    public void dtest_setTodoItem()
     {
         final TodoItem todoItem = new TodoItem("Testfasding", "Testing some jadfvasdfaadfva code to see that it works", LocalDate.now(), testAssignee);
         testTodoItemTask.setTodoItem(todoItem);
@@ -57,32 +59,31 @@ public class TodoItemTaskTest
     }
 
     @Test
-    public void test_getAssignee()
+    public void etest_getAssignee()
     {
         assertEquals(testTodoItemTask.getAssignee(), testAssignee);
     }
 
     @Test
-    public void test_setAssigneeAndSetAssigned()
+    public void ftest_setAssigneeAndSetAssigned()
     {
         testTodoItemTask.setAssignee(null);
         assertFalse(testTodoItemTask.isAssigned() && testTodoItemTask.getAssignee().equals(testAssignee));
     }
 
     @Test
-    public void test_toString()
+    public void gtest_toString()
     {
-        String expectedSummary = "TodoItemTask{id=1, assigned=true, todoItem=TodoItem{id=0, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}}";
+        String expectedSummary = "TodoItemTask{id=1, assigned=false, todoItem=TodoItem{id=1, title='Testfasding', taskDescription='Testing some jadfvasdfaadfva code to see that it works', deadLine=2022-04-25, done=false}}";
         assertEquals(expectedSummary, testTodoItemTask.toString());
     }
 
     @Test
-    public void test_toStringAndChange()
+    public void htest_toStringAndChange()
     {
-        String expectedSummary = "TodoItemTask{id=1, assigned=true, todoItem=TodoItem{id=0, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}}";
+        String expectedSummary = "TodoItemTask{id=1, assigned=false, todoItem=TodoItem{id=1, title='Testfasding', taskDescription='Testing some jadfvasdfaadfva code to see that it works', deadLine=2022-04-25, done=false}}";
         assertEquals(expectedSummary, testTodoItemTask.toString());
-        String expectedSummary1 = "TodoItemTask{id=1, assigned=true, todoItem=TodoItem{id=0, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}}";
-        testTodoItemTask.getAssignee().setFirstName("Anfsdsdfsreas");
+        String expectedSummary1 = "TodoItemTask{id=1, assigned=false, todoItem=TodoItem{id=1, title='Testfasding', taskDescription='Testing some jadfvasdfaadfva code to see that it works', deadLine=2022-04-25, done=false}}";
         assertEquals(expectedSummary1, testTodoItemTask.toString());
     }
 
