@@ -70,14 +70,14 @@ public class TodoItemTaskTest
     }
 
     @Test
-    public void test_getSummary()
+    public void test_toString()
     {
         String expectedSummary = "TodoItemTask{id=1, assigned=true, todoItem=TodoItem{id=0, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}}";
         assertEquals(expectedSummary, testTodoItemTask.toString());
     }
 
     @Test
-    public void test_getSummaryAndChange()
+    public void test_toStringAndChange()
     {
         String expectedSummary = "TodoItemTask{id=1, assigned=true, todoItem=TodoItem{id=0, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}}";
         assertEquals(expectedSummary, testTodoItemTask.toString());

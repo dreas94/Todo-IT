@@ -141,14 +141,14 @@ public class TodoItemTest
     }
 
     @Test
-    public void test_getSummary()
+    public void test_toString()
     {
         String expectedSummary = "TodoItem{id=1, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}";
         assertEquals(expectedSummary, testTodoItem.toString());
     }
 
     @Test
-    public void test_getSummaryAndChange()
+    public void test_toStringAndChange()
     {
         String expectedSummary = "TodoItem{id=1, title='Testing', taskDescription='Testing some java code to see that it works', deadLine=2018-12-27, done=false}";
         assertEquals(expectedSummary, testTodoItem.toString());

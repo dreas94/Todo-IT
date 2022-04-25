@@ -4,20 +4,27 @@ import java.util.Objects;
 
 public class AppUser
 {
-    private String userName;
+    private String username;
     private String password;
     private AppRole role;
 
-    public String getUserName()
+    public AppUser(String username, String password, AppRole role)
     {
-        return userName;
+        setUsername(username);
+        setPassword(password);
+        setRole(role);
     }
 
-    public void setUserName(String userName)
+    public String getUsername()
     {
-        if (userName == null) throw new IllegalArgumentException("Parameter: String userName was null");
-        if (userName.isEmpty()) throw new IllegalArgumentException("Parameter: String userName was empty");
-        this.userName = userName;
+        return username;
+    }
+
+    public void setUsername(String username)
+    {
+        if (username == null) throw new IllegalArgumentException("Parameter: String username was null");
+        if (username.isEmpty()) throw new IllegalArgumentException("Parameter: String username was empty");
+        this.username = username;
     }
 
     public String getPassword()
@@ -46,7 +53,7 @@ public class AppUser
     @Override
     public String toString() {
         return "AppUser{" +
-                "userName='" + userName + '\'' +
+                "username='" + username + '\'' +
                 ", role=" + role +
                 '}';
     }
@@ -58,12 +65,12 @@ public class AppUser
         if (o == null || getClass() != o.getClass()) return false;
 
         AppUser appUser = (AppUser) o;
-        return getUserName().equals(appUser.getUserName()) && getRole() == appUser.getRole();
+        return getUsername().equals(appUser.getUsername()) && getRole() == appUser.getRole();
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(getUserName(), getRole());
+        return Objects.hash(getUsername(), getRole());
     }
 }

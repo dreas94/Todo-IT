@@ -104,14 +104,14 @@ public class PersonTest
     }
 
     @Test
-    public void test_getSummary()
+    public void test_toString()
     {
         String expectedSummary = "Person{id=1, firstName='Andreas', lastName='Eriksson', email='fakeemail@gmail.com'}";
         assertEquals(expectedSummary, testSubject.toString());
     }
 
     @Test
-    public void test_getSummaryAndChange()
+    public void test_toStringAndChange()
     {
         String expectedSummary = "Person{id=1, firstName='Andreas', lastName='Eriksson', email='fakeemail@gmail.com'}";
         assertEquals(expectedSummary, testSubject.toString());
