@@ -1,5 +1,7 @@
 package se.lexicon.dreas94.model;
 
+import se.lexicon.dreas94.MessageHandler;
+
 import java.util.Objects;
 
 public class TodoItemTask
