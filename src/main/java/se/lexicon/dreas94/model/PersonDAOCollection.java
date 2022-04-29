@@ -30,13 +30,11 @@ public class PersonDAOCollection implements PersonDAO
     @Override
     public Person findById(int id)
     {
-        Iterator<Person> iterator = dataCollection.iterator();
-        while (iterator.hasNext())
+        for(Person person : dataCollection)
         {
-            Person temp = iterator.next();
-            if(temp.getId() == id)
+            if(person.getId() == id)
             {
-                return temp;
+                return person;
             }
         }
         return null;
@@ -45,13 +43,11 @@ public class PersonDAOCollection implements PersonDAO
     @Override
     public Person findByEmail(String email)
     {
-        Iterator<Person> iterator = dataCollection.iterator();
-        while (iterator.hasNext())
+        for(Person person : dataCollection)
         {
-            Person temp = iterator.next();
-            if(temp.getEmail().equalsIgnoreCase(email))
+            if(person.getEmail().equalsIgnoreCase(email))
             {
-                return temp;
+                return person;
             }
         }
         return null;
