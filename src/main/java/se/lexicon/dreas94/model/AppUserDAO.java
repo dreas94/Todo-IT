@@ -4,5 +4,5 @@ import java.util.Collection;
 
 public interface AppUserDAO extends GenericDAO<AppUser,String>
 {
-    String findByUsername(String userName);
+    AppUser findByUsername(String userName);
 }
