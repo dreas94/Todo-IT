@@ -1,10 +1,10 @@
 package se.lexicon.dreas94.model;
 
-import java.util.Collection;
+import java.util.Vector;
 
 public interface GenericDAO<T,S>
 {
     T persist(T t);
-    Collection<T> findAll();
+    Vector<T> findAll();
     void remove(S s);
 }

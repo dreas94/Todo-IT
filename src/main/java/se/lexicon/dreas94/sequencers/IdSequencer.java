@@ -11,7 +11,7 @@ public abstract class IdSequencer
 
     public int nextId()
     {
-        return this.currentId++;
+        return ++this.currentId;
     }
 
     public int getCurrentId()

@@ -1,11 +1,13 @@
 package se.lexicon.dreas94.model;
 
+import se.lexicon.dreas94.sequencers.TodoItemIdSequencer;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class TodoItem
 {
-    private static int sequencer = 0;
+    private TodoItemIdSequencer sequencer;
 
     private final int id;
     private String title;
@@ -17,7 +19,8 @@ public class TodoItem
 
     public TodoItem()
     {
-        this.id = sequencer++;
+        this.id = sequencer.getInstance().getCurrentId();
+        sequencer.getInstance().nextId();
     }
 
     public TodoItem(String title, String taskDescription, LocalDate deadLine, Person creator)
@@ -92,7 +95,7 @@ public class TodoItem
 
     public boolean isOverDue()
     {
-        return deadLine.equals(LocalDate.now());
+        return deadLine.isAfter(LocalDate.now());
     }
 
     @Override

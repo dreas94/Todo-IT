@@ -1,5 +1,7 @@
 package se.lexicon.dreas94.model;
 
+import se.lexicon.dreas94.sequencers.PersonIdSequencer;
+
 import java.util.Objects;
 
 public class Person
@@ -10,11 +12,12 @@ public class Person
     private String email;
     AppUser credentials;
 
-    private static int sequencer = 0;
+    private PersonIdSequencer sequencer;
 
     public Person()
     {
-        this.id = sequencer++;
+        this.id = sequencer.getInstance().getCurrentId();
+        sequencer.getInstance().nextId();
     }
 
     public Person(String firstName, String lastName, String email)

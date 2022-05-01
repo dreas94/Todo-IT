@@ -95,7 +95,7 @@ public class TodoItemTest
     @Test
     public void itest_setDeadline()
     {
-        final LocalDate testLocalDate = LocalDate.now();
+        final LocalDate testLocalDate = LocalDate.parse("2023-04-25");
         testTodoItem.setDeadLine(testLocalDate);
         assertEquals(testLocalDate, testTodoItem.getDeadLine());
     }
@@ -146,16 +146,16 @@ public class TodoItemTest
     @Test
     public void ptest_toString()
     {
-        String expectedSummary = "TodoItem{id=1, title='Testdasding', taskDescription='Testdasding', deadLine=2022-04-25, done=true}";
+        String expectedSummary = "TodoItem{id=1, title='Testdasding', taskDescription='Testdasding', deadLine=2023-04-25, done=true}";
         assertEquals(expectedSummary, testTodoItem.toString());
     }
 
     @Test
     public void qtest_toStringAndChange()
     {
-        String expectedSummary = "TodoItem{id=1, title='Testdasding', taskDescription='Testdasding', deadLine=2022-04-25, done=true}";
+        String expectedSummary = "TodoItem{id=1, title='Testdasding', taskDescription='Testdasding', deadLine=2023-04-25, done=true}";
         assertEquals(expectedSummary, testTodoItem.toString());
-        String expectedSummary1 = "TodoItem{id=1, title='Anfsdsdfsreas', taskDescription='Testdasding', deadLine=2022-04-25, done=true}";
+        String expectedSummary1 = "TodoItem{id=1, title='Anfsdsdfsreas', taskDescription='Testdasding', deadLine=2023-04-25, done=true}";
         testTodoItem.setTitle("Anfsdsdfsreas");
         assertEquals(expectedSummary1, testTodoItem.toString());
     }

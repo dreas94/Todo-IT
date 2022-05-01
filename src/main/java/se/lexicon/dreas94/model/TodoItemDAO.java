@@ -5,6 +5,7 @@ import java.util.Collection;
 
 public interface TodoItemDAO extends GenericDAO<TodoItem,Integer>
 {
+    TodoItem findById(int id);
     Collection<TodoItem> findAllByDoneStatus(boolean done);
     Collection<TodoItem> findByTitleContains(String title);
     Collection<TodoItem> findByPersonId(int personId);

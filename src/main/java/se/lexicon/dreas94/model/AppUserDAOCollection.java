@@ -1,27 +1,46 @@
 package se.lexicon.dreas94.model;
 
-import java.util.Collection;
+import java.util.Vector;
 
 public class AppUserDAOCollection implements AppUserDAO
 {
+    private Vector<AppUser> dataCollection;
 
     @Override
-    public AppUser findByUsername(String userName) {
-        return null;
+    public AppUser persist(AppUser appUser)
+    {
+        if(appUser == null) throw new IllegalArgumentException("AppUser appUser username was null");
+
+        dataCollection.add(appUser);
+
+        return appUser;
     }
 
     @Override
-    public AppUser persist(AppUser appUser) {
-        return null;
+    public Vector<AppUser> findAll()
+    {
+        return dataCollection;
     }
 
     @Override
-    public Collection<AppUser> findAll() {
-        return null;
+    public void remove(String userName)
+    {
+        dataCollection.remove(findByUsername(userName));
     }
 
     @Override
-    public void remove(String s) {
+    public AppUser findByUsername(String userName)
+    {
+        if(userName == null) throw new IllegalArgumentException("Person person username was null");
+        if (userName.isEmpty()) throw new IllegalArgumentException("Parameter: String username was empty");
 
+        for(AppUser appUser : dataCollection)
+        {
+            if(appUser.getUsername().equalsIgnoreCase(userName))
+            {
+                return appUser;
+            }
+        }
+        return null;
     }
 }

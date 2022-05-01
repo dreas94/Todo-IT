@@ -1,22 +1,23 @@
 package se.lexicon.dreas94.model;
 
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.Vector;
 
 public class PersonDAOCollection implements PersonDAO
 {
-    private Collection<Person> dataCollection;
+    private Vector<Person> dataCollection;
 
     @Override
     public Person persist(Person person)
     {
+        if(person == null) throw new IllegalArgumentException("Person person username was null");
+
         dataCollection.add(person);
 
         return person;
     }
 
     @Override
-    public Collection<Person> findAll()
+    public Vector<Person> findAll()
     {
         return dataCollection;
     }

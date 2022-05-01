@@ -1,10 +1,12 @@
 package se.lexicon.dreas94.model;
 
+import se.lexicon.dreas94.sequencers.TodoItemTaskIdSequencer;
+
 import java.util.Objects;
 
 public class TodoItemTask
 {
-    private static int sequencer = 0;
+    private TodoItemTaskIdSequencer sequencer;
 
     private final int id;
     private boolean assigned;
@@ -14,7 +16,8 @@ public class TodoItemTask
 
     public TodoItemTask()
     {
-        this.id = sequencer++;
+        this.id = sequencer.getInstance().getCurrentId();
+        sequencer.getInstance().nextId();
     }
 
     public TodoItemTask(TodoItem todoItem, Person assignee)
