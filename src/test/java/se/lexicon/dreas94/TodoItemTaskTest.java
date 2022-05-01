@@ -53,7 +53,7 @@ public class TodoItemTaskTest
     @Test
     public void dtest_setTodoItem()
     {
-        final TodoItem todoItem = new TodoItem("Testfasding", "Testing some jadfvasdfaadfva code to see that it works", LocalDate.now(), testAssignee);
+        final TodoItem todoItem = new TodoItem("Testfasding", "Testing some jadfvasdfaadfva code to see that it works", LocalDate.parse("2022-04-25"), testAssignee);
         testTodoItemTask.setTodoItem(todoItem);
 
     }
