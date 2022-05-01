@@ -4,7 +4,12 @@ import java.util.Vector;
 
 public class AppUserDAOCollection implements AppUserDAO
 {
-    private Vector<AppUser> dataCollection;
+    private final Vector<AppUser> dataCollection;
+
+    public AppUserDAOCollection()
+    {
+        dataCollection = new Vector<>();
+    }
 
     @Override
     public AppUser persist(AppUser appUser)

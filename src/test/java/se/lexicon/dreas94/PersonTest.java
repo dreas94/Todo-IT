@@ -17,8 +17,8 @@ public class PersonTest
     @BeforeClass
     public static void setUp()
     {
-        Person personTest = new Person("Mehrdad", "Javan", "fakeemail1@gmail.com");
-        testSubject = new Person("Andreas", "Eriksson", "fakeemail@gmail.com");
+        Person personTest = new Person("Mehrdad", "Javan", "fakeemail1@gmail.com", null);
+        testSubject = new Person("Andreas", "Eriksson", "fakeemail@gmail.com", null);
     }
 
     @Test

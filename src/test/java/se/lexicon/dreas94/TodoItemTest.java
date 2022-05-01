@@ -25,7 +25,7 @@ public class TodoItemTest
     public static void setUp()
     {
         TodoItem todoItemTest = new TodoItem();
-        testSubject = new Person("Andreas", "Eriksson", "fakeemail@gmail.com");
+        testSubject = new Person("Andreas", "Eriksson", "fakeemail@gmail.com", null);
         testTodoItem = new TodoItem("Testing", "Testing some java code to see that it works",
                 LocalDate.parse("2018-12-27"), testSubject);
     }

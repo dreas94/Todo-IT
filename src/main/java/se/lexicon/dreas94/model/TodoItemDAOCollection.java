@@ -6,8 +6,12 @@ import java.util.Vector;
 
 public class TodoItemDAOCollection implements TodoItemDAO
 {
-    private Vector<TodoItem> dataCollection;
+    private final Vector<TodoItem> dataCollection;
 
+    public TodoItemDAOCollection()
+    {
+        dataCollection = new Vector<>();
+    }
     @Override
     public TodoItem persist(TodoItem todoItem)
     {
@@ -91,7 +95,7 @@ public class TodoItemDAOCollection implements TodoItemDAO
         Vector<TodoItem> returnVector = new Vector<>();
         for(TodoItem todoItem : dataCollection)
         {
-            if(deadLine.isBefore(todoItem.getDeadLine()))
+            if(todoItem.getDeadLine().isBefore(deadLine))
             {
                 returnVector.add(todoItem);
             }
@@ -106,7 +110,7 @@ public class TodoItemDAOCollection implements TodoItemDAO
             Vector<TodoItem> returnVector = new Vector<>();
             for(TodoItem todoItem : dataCollection)
             {
-                if(deadLine.isAfter(todoItem.getDeadLine()))
+                if(todoItem.getDeadLine().isAfter(deadLine))
                 {
                     returnVector.add(todoItem);
                 }

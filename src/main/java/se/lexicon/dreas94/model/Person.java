@@ -20,12 +20,13 @@ public class Person
         sequencer.getInstance().nextId();
     }
 
-    public Person(String firstName, String lastName, String email)
+    public Person(String firstName, String lastName, String email, AppUser credentials)
     {
         this();
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
+        setCredentials(credentials);
     }
 
     public int getId()

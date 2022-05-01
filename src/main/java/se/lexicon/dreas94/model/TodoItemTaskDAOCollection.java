@@ -4,7 +4,12 @@ import java.util.Vector;
 
 public class TodoItemTaskDAOCollection implements TodoItemTaskDAO
 {
-    private Vector<TodoItemTask> dataCollection;
+    private final Vector<TodoItemTask> dataCollection;
+
+    public TodoItemTaskDAOCollection()
+    {
+        dataCollection = new Vector<>();
+    }
 
     @Override
     public TodoItemTask persist(TodoItemTask todoItemTask)
@@ -25,7 +30,7 @@ public class TodoItemTaskDAOCollection implements TodoItemTaskDAO
     @Override
     public void remove(Integer id)
     {
-        findById(id);
+        dataCollection.remove(findById(id));
     }
 
     @Override
@@ -58,16 +63,14 @@ public class TodoItemTaskDAOCollection implements TodoItemTaskDAO
     @Override
     public Vector<TodoItemTask> findByPersonId(int personId)
     {
+        Vector<TodoItemTask> returnVector = new Vector<>();
+        for(TodoItemTask todoItemTask : dataCollection)
         {
-            Vector<TodoItemTask> returnVector = new Vector<>();
-            for(TodoItemTask todoItemTask : dataCollection)
+            if(todoItemTask.isAssigned() && todoItemTask.getAssignee().getId() == personId)
             {
-                if(todoItemTask.isAssigned() && todoItemTask.getAssignee().getId() == personId)
-                {
-                    returnVector.add(todoItemTask);
-                }
+                returnVector.add(todoItemTask);
             }
-            return returnVector;
         }
+        return returnVector;
     }
 }

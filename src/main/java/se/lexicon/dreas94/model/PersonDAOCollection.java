@@ -4,8 +4,12 @@ import java.util.Vector;
 
 public class PersonDAOCollection implements PersonDAO
 {
-    private Vector<Person> dataCollection;
+    private final Vector<Person> dataCollection;
 
+    public PersonDAOCollection()
+    {
+        dataCollection = new Vector<>();
+    }
     @Override
     public Person persist(Person person)
     {
