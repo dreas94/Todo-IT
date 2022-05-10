@@ -1,4 +1,4 @@
-package se.lexicon.dreas94.sequencers;
+package se.lexicon.dreas94.utility.sequencers;
 
 public class TodoItemTaskIdSequencer  extends IdSequencer
 {
