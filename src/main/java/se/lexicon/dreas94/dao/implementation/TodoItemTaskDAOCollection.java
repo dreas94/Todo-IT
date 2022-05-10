@@ -1,4 +1,7 @@
-package se.lexicon.dreas94.model;
+package se.lexicon.dreas94.dao.implementation;
+
+import se.lexicon.dreas94.dao.TodoItemTaskDAO;
+import se.lexicon.dreas94.model.TodoItemTask;
 
 import java.util.Vector;
 
@@ -36,41 +39,33 @@ public class TodoItemTaskDAOCollection implements TodoItemTaskDAO
     @Override
     public TodoItemTask findById(int id)
     {
-        for(TodoItemTask todoItem : dataCollection)
-        {
-            if(todoItem.getId() == id)
-            {
-                return todoItem;
-            }
-        }
-        return null;
+        return dataCollection.stream()
+                .filter(todoItemTask -> todoItemTask.getId() == id)
+                .findFirst().orElse(null);
     }
 
     @Override
     public Vector<TodoItemTask> findByAssignedStatus(boolean status)
     {
         Vector<TodoItemTask> returnVector = new Vector<>();
-        for(TodoItemTask todoItemTask : dataCollection)
-        {
-            if(todoItemTask.isAssigned() == status)
-            {
-                returnVector.add(todoItemTask);
-            }
-        }
+
+        dataCollection.stream()
+                .filter(todoItemTask -> todoItemTask.isAssigned() == status)
+                .forEach(returnVector::add);
+
         return returnVector;
     }
 
     @Override
     public Vector<TodoItemTask> findByPersonId(int personId)
     {
+
         Vector<TodoItemTask> returnVector = new Vector<>();
-        for(TodoItemTask todoItemTask : dataCollection)
-        {
-            if(todoItemTask.isAssigned() && todoItemTask.getAssignee().getId() == personId)
-            {
-                returnVector.add(todoItemTask);
-            }
-        }
+
+        dataCollection.stream()
+                .filter(todoItemTask -> todoItemTask.isAssigned() && todoItemTask.getAssignee().getId() == personId)
+                .forEach(returnVector::add);
+
         return returnVector;
     }
 }

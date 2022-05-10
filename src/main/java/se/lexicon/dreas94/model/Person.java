@@ -1,6 +1,7 @@
 package se.lexicon.dreas94.model;
 
-import se.lexicon.dreas94.sequencers.PersonIdSequencer;
+import se.lexicon.dreas94.utility.sequencers.PersonIdSequencer;
+import se.lexicon.dreas94.utility.Validation;
 
 import java.util.Objects;
 
@@ -12,12 +13,9 @@ public class Person
     private String email;
     AppUser credentials;
 
-    private PersonIdSequencer sequencer;
-
     public Person()
     {
-        this.id = sequencer.getInstance().getCurrentId();
-        sequencer.getInstance().nextId();
+        this.id = PersonIdSequencer.getInstance().nextId();
     }
 
     public Person(String firstName, String lastName, String email, AppUser credentials)
@@ -41,8 +39,7 @@ public class Person
 
     public void setFirstName(String firstName)
     {
-        if(firstName == null) throw new IllegalArgumentException("Parameter: String firstName was null");
-
+        Validation.checkStringNotNull.accept(firstName, "FirstName");
         this.firstName = firstName;
     }
 
@@ -53,7 +50,7 @@ public class Person
 
     public void setLastName(String lastName)
     {
-        if(lastName == null) throw new IllegalArgumentException("Parameter: String lastName was null");
+        Validation.checkStringNotNull.accept(lastName, "LastName");
 
         this.lastName = lastName;
     }
@@ -65,7 +62,7 @@ public class Person
 
     public void setEmail(String email)
     {
-        if(email == null) throw new IllegalArgumentException("Parameter: String email was null");
+        Validation.checkStringNotNull.accept(email, "Email");
 
         this.email = email;
     }
@@ -96,7 +93,7 @@ public class Person
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return getId() == person.getId() && getFirstName().equals(person.getFirstName()) && getLastName().equals(person.getLastName()) && getEmail().equals(person.getEmail());
+        return getId() == person.getId() && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(email, person.email);
     }
 
     @Override

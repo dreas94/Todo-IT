@@ -45,7 +45,7 @@ public class AppUserTest
     public void ctest_setUserNameToNull()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Parameter: String username was null");
+        exception.expectMessage("Username is null");
         String testUsername = null;
         testUser.setUsername(testUsername);
     }
@@ -54,7 +54,7 @@ public class AppUserTest
     public void dtest_setUserNameToEmpty()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Parameter: String username was empty");
+        exception.expectMessage("Username is empty");
         String testUsername = "";
         testUser.setUsername(testUsername);
     }
@@ -78,7 +78,7 @@ public class AppUserTest
     public void gtest_setPasswordToNull()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Parameter: String password was null");
+        exception.expectMessage("Password is null");
         String testPassword = null;
         testUser.setPassword(testPassword);
     }
@@ -87,7 +87,7 @@ public class AppUserTest
     public void htest_setPasswordToEmpty()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Parameter: String password was empty");
+        exception.expectMessage("Password is empty");
         String testPassword = "";
         testUser.setPassword(testPassword);
     }

@@ -1,5 +1,7 @@
 package se.lexicon.dreas94.model;
 
+import se.lexicon.dreas94.utility.Validation;
+
 import java.util.Objects;
 
 public class AppUser
@@ -22,8 +24,7 @@ public class AppUser
 
     public void setUsername(String username)
     {
-        if (username == null) throw new IllegalArgumentException("Parameter: String username was null");
-        if (username.isEmpty()) throw new IllegalArgumentException("Parameter: String username was empty");
+        Validation.checkStringNotNull.andThen(Validation.checkNotEmpty).accept(username, "Username");
         this.username = username;
     }
 
@@ -34,8 +35,7 @@ public class AppUser
 
     public void setPassword(String password)
     {
-        if (password == null) throw new IllegalArgumentException("Parameter: String password was null");
-        if (password.isEmpty()) throw new IllegalArgumentException("Parameter: String password was empty");
+        Validation.checkStringNotNull.andThen(Validation.checkNotEmpty).andThen(Validation.checkMinLength3).accept(password, "Password");
         this.password = password;
     }
 
@@ -65,7 +65,7 @@ public class AppUser
         if (o == null || getClass() != o.getClass()) return false;
 
         AppUser appUser = (AppUser) o;
-        return getUsername().equals(appUser.getUsername()) && getRole() == appUser.getRole();
+        return Objects.equals(getUsername(), appUser.getUsername()) && getRole() == appUser.getRole();
     }
 
     @Override

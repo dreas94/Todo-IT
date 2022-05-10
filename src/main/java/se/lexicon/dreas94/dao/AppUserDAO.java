@@ -1,6 +1,6 @@
-package se.lexicon.dreas94.model;
+package se.lexicon.dreas94.dao;
 
-import java.util.Collection;
+import se.lexicon.dreas94.model.AppUser;
 
 public interface AppUserDAO extends GenericDAO<AppUser,String>
 {

@@ -1,4 +1,4 @@
-package se.lexicon.dreas94.sequencers;
+package se.lexicon.dreas94.utility.sequencers;
 
 public abstract class IdSequencer
 {
@@ -6,17 +6,17 @@ public abstract class IdSequencer
 
     public IdSequencer()
     {
-        setCurrentId(0);
-    }
-
-    public int nextId()
-    {
-        return ++this.currentId;
+        setCurrentId(-1);
     }
 
     public int getCurrentId()
     {
         return this.currentId;
+    }
+
+    public int nextId()
+    {
+        return ++this.currentId;
     }
 
     public void setCurrentId(int currentId)

@@ -47,7 +47,7 @@ public class PersonTest
     public void dtest_setFirstNameToNull()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Parameter: String firstName was null");
+        exception.expectMessage("FirstName is null");
         String testName = null;
         testSubject.setFirstName(testName);
     }
@@ -71,7 +71,7 @@ public class PersonTest
     public void gtest_setLastNameToNull()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Parameter: String lastName was null");
+        exception.expectMessage("LastName is null");
         String testName = null;
         testSubject.setLastName(testName);
     }
@@ -95,7 +95,7 @@ public class PersonTest
     public void jtest_setEmailToNull()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Parameter: String email was null");
+        exception.expectMessage("Email is null");
         String testEmail = null;
         testSubject.setEmail(testEmail);
     }

@@ -1,4 +1,6 @@
-package se.lexicon.dreas94.model;
+package se.lexicon.dreas94.dao;
+
+import se.lexicon.dreas94.model.TodoItemTask;
 
 import java.util.Collection;
 

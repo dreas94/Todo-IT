@@ -1,6 +1,8 @@
 package se.lexicon.dreas94.model;
 
-import se.lexicon.dreas94.sequencers.TodoItemTaskIdSequencer;
+import se.lexicon.dreas94.utility.sequencers.PersonIdSequencer;
+import se.lexicon.dreas94.utility.sequencers.TodoItemTaskIdSequencer;
+import se.lexicon.dreas94.utility.Validation;
 
 import java.util.Objects;
 
@@ -16,8 +18,7 @@ public class TodoItemTask
 
     public TodoItemTask()
     {
-        this.id = sequencer.getInstance().getCurrentId();
-        sequencer.getInstance().nextId();
+        this.id = TodoItemTaskIdSequencer.getInstance().nextId();
     }
 
     public TodoItemTask(TodoItem todoItem, Person assignee)
@@ -49,7 +50,7 @@ public class TodoItemTask
 
     public void setTodoItem(TodoItem todoItem)
     {
-        if (todoItem == null) throw new IllegalArgumentException("Parameter: TodoItem todoItem was null");
+        Validation.checkTodoItemNotNull.accept(todoItem, "TodoItem");
         this.todoItem = todoItem;
     }
 
@@ -80,12 +81,12 @@ public class TodoItemTask
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TodoItemTask that = (TodoItemTask) o;
-        return getId() == that.getId() && isAssigned() == that.isAssigned() && getTodoItem().equals(that.getTodoItem());
+        return getId() == that.getId() && isAssigned() == that.isAssigned() && Objects.equals(getTodoItem(), that.getTodoItem()) && Objects.equals(getAssignee(), that.getAssignee());
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(getId(), isAssigned(), getTodoItem());
+        return Objects.hash(getId(), isAssigned(), getTodoItem(), getAssignee());
     }
 }

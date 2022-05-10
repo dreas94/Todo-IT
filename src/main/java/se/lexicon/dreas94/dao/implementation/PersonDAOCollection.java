@@ -1,4 +1,7 @@
-package se.lexicon.dreas94.model;
+package se.lexicon.dreas94.dao.implementation;
+
+import se.lexicon.dreas94.dao.PersonDAO;
+import se.lexicon.dreas94.model.Person;
 
 import java.util.Vector;
 
@@ -35,26 +38,16 @@ public class PersonDAOCollection implements PersonDAO
     @Override
     public Person findById(int id)
     {
-        for(Person person : dataCollection)
-        {
-            if(person.getId() == id)
-            {
-                return person;
-            }
-        }
-        return null;
+        return dataCollection.stream()
+                .filter(person -> person.getId() == id)
+                .findFirst().orElse(null);
     }
 
     @Override
     public Person findByEmail(String email)
     {
-        for(Person person : dataCollection)
-        {
-            if(person.getEmail().equalsIgnoreCase(email))
-            {
-                return person;
-            }
-        }
-        return null;
+        return dataCollection.stream()
+                .filter(person -> person.getEmail().equalsIgnoreCase(email))
+                .findFirst().orElse(null);
     }
 }

@@ -1,4 +1,4 @@
-package se.lexicon.dreas94.model;
+package se.lexicon.dreas94.dao;
 
 import java.util.Vector;
 

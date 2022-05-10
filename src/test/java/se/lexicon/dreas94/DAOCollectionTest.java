@@ -7,10 +7,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
+import se.lexicon.dreas94.dao.implementation.AppUserDAOCollection;
+import se.lexicon.dreas94.dao.implementation.PersonDAOCollection;
+import se.lexicon.dreas94.dao.implementation.TodoItemDAOCollection;
+import se.lexicon.dreas94.dao.implementation.TodoItemTaskDAOCollection;
 import se.lexicon.dreas94.model.*;
 
 import java.time.LocalDate;
-import java.util.Vector;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DAOCollectionTest

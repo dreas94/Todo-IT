@@ -1,6 +1,8 @@
 package se.lexicon.dreas94.model;
 
-import se.lexicon.dreas94.sequencers.TodoItemIdSequencer;
+import se.lexicon.dreas94.utility.sequencers.PersonIdSequencer;
+import se.lexicon.dreas94.utility.sequencers.TodoItemIdSequencer;
+import se.lexicon.dreas94.utility.Validation;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -19,8 +21,7 @@ public class TodoItem
 
     public TodoItem()
     {
-        this.id = sequencer.getInstance().getCurrentId();
-        sequencer.getInstance().nextId();
+        this.id = TodoItemIdSequencer.getInstance().nextId();
     }
 
     public TodoItem(String title, String taskDescription, LocalDate deadLine, Person creator)
@@ -45,8 +46,7 @@ public class TodoItem
 
     public void setTitle(String title)
     {
-        if (title == null) throw new IllegalArgumentException("Parameter: String title was null");
-        if (title.isEmpty()) throw new IllegalArgumentException("Parameter: String title was empty");
+        Validation.checkStringNotNull.andThen(Validation.checkNotEmpty).accept(title, "Title");
 
         this.title = title;
     }
@@ -68,7 +68,7 @@ public class TodoItem
 
     public void setDeadLine(LocalDate deadLine)
     {
-        if (deadLine == null) throw new IllegalArgumentException("Parameter: LocalDate deadLine was null");
+        Validation.checkLocalDateNotNull.accept(deadLine, "Deadline");
 
         this.deadLine = deadLine;
     }
@@ -116,12 +116,12 @@ public class TodoItem
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TodoItem todoItem = (TodoItem) o;
-        return getId() == todoItem.getId() && isDone() == todoItem.isDone() && getTitle().equals(todoItem.getTitle()) && Objects.equals(getTaskDescription(), todoItem.getTaskDescription()) && getDeadLine().equals(todoItem.getDeadLine());
+        return getId() == todoItem.getId() && isDone() == todoItem.isDone() && Objects.equals(getTitle(), todoItem.getTitle()) && Objects.equals(getTaskDescription(), todoItem.getTaskDescription()) && Objects.equals(getDeadLine(), todoItem.getDeadLine()) && Objects.equals(getCreator(), todoItem.getCreator());
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(getId(), getTitle(), getTaskDescription(), getDeadLine(), isDone());
+        return Objects.hash(getId(), getTitle(), getTaskDescription(), getDeadLine(), isDone(), getCreator());
     }
 }

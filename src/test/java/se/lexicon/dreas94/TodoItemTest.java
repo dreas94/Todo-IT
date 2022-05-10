@@ -56,7 +56,7 @@ public class TodoItemTest
     public void dtest_setFirstNameToNull()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Parameter: String title was null");
+        exception.expectMessage("Title is null");
         String testName = null;
         testTodoItem.setTitle(testName);
     }
@@ -65,7 +65,7 @@ public class TodoItemTest
     public void etest_setFirstNameToEmptySpace()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Parameter: String title was empty");
+        exception.expectMessage("Title is empty");
         String testName = "";
         testTodoItem.setTitle(testName);
     }
@@ -104,7 +104,7 @@ public class TodoItemTest
     public void jtest_setDeadlineToNull()
     {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Parameter: LocalDate deadLine was null");
+        exception.expectMessage("Deadline is null");
         final LocalDate testLocalDate = null;
         testTodoItem.setDeadLine(testLocalDate);
     }

@@ -1,4 +1,7 @@
-package se.lexicon.dreas94.model;
+package se.lexicon.dreas94.dao.implementation;
+
+import se.lexicon.dreas94.dao.AppUserDAO;
+import se.lexicon.dreas94.model.AppUser;
 
 import java.util.Vector;
 
@@ -34,18 +37,10 @@ public class AppUserDAOCollection implements AppUserDAO
     }
 
     @Override
-    public AppUser findByUsername(String userName)
+    public AppUser findByUsername(String username)
     {
-        if(userName == null) throw new IllegalArgumentException("Person person username was null");
-        if (userName.isEmpty()) throw new IllegalArgumentException("Parameter: String username was empty");
-
-        for(AppUser appUser : dataCollection)
-        {
-            if(appUser.getUsername().equalsIgnoreCase(userName))
-            {
-                return appUser;
-            }
-        }
-        return null;
+        return dataCollection.stream()
+                .filter(appUser -> appUser.getUsername().equalsIgnoreCase(username))
+                .findFirst().orElse(null);
     }
 }
